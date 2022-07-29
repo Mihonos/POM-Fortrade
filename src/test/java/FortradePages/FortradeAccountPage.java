@@ -15,10 +15,10 @@ WebDriver driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy (css = "[name='FirstName']")
+    @FindBy (css = "[placeholder='*First Name']")
     WebElement firstNameBtn;
 
-    @FindBy (css = "[name='LastName']")
+    @FindBy (css = "[placeholder='*Last Name']")
     WebElement lastName;
 
     @FindBy (css = "[placeholder='*Email Address']")
@@ -43,9 +43,9 @@ WebDriver driver;
     }
 
     public void enterEmail(){
-        email.sendKeys("test"+System.currentTimeMillis()/1000000+"@mailinator.com");
+        email.sendKeys("test"+System.currentTimeMillis()/100+"@mailinator.com");
 
-        System.out.println(email.getText());
+        //System.out.println(email.getText());
     }
 
     //public void printEmail(){ System.out.println(email.getText()); }

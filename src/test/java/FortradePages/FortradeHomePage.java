@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FortradeHomePage {
 
@@ -33,7 +35,8 @@ WebDriver driver;
 
 
     public void removeIframe (){
-
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.elementToBeClickable(dontAllowBtn));
     dontAllowBtn.click();
 }
 
@@ -43,7 +46,8 @@ WebDriver driver;
 }*/
 
 public void openAccount(){
-
+WebDriverWait wait = new WebDriverWait(driver,30);
+wait.until(ExpectedConditions.elementToBeClickable(openAccBtn));
     Actions hover = new Actions(driver);
     hover.moveToElement(openAccBtn);
     hover.moveToElement(realBtn);

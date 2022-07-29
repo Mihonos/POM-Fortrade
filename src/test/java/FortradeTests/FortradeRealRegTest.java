@@ -5,9 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -17,10 +19,15 @@ public class FortradeRealRegTest {
     WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver103.exe");
+    @Parameters({"browser"})
+    public void setup(String browser){
+        if (browser.equals("CHROME")){ System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver103.exe");
+            driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("EDGE")){
+            System.setProperty("webdriver.edge.driver", "src\\main\\resources\\msedgedriver103.exe");
+            driver = new EdgeDriver();
+        }
 
-        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("https://www.fortrade.com/");
