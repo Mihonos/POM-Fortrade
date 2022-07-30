@@ -45,7 +45,7 @@ WebDriver driver;
     public void enterEmail(){
         email.sendKeys("test"+System.currentTimeMillis()/100+"@mailinator.com");
 
-        //System.out.println(email.getText());
+        System.out.println(email.getAttribute("value"));
     }
 
     //public void printEmail(){ System.out.println(email.getText()); }
